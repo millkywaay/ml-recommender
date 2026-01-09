@@ -12,6 +12,9 @@ class OrderItem(BaseModel):
 class RecommendationRequest(BaseModel):
     user_id: int
     order_items: list[OrderItem]
+@app.get("/")
+def health():
+    return {"status": "ml recommender running"}
 
 @app.post("/recommend")
 def recommend(data: RecommendationRequest):
